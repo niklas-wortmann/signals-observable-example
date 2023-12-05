@@ -1,13 +1,7 @@
-import {
-  Component,
-  computed,
-  EventEmitter,
-  input,
-  Output,
-} from '@angular/core';
-import { Product } from './product.service';
-import { RouterLink } from '@angular/router';
-import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
+import {Component, computed, EventEmitter, input, Output} from '@angular/core';
+import {Product} from './product.service';
+import {RouterLink} from '@angular/router';
+import {CurrencyPipe, NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-product-card',
