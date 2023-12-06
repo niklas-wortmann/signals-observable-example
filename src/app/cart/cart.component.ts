@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { CartItem, CartService } from './cart.service';
-import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-cart',
@@ -213,8 +212,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class CartComponent {
   private cartService = inject(CartService);
-  items = toSignal(this.cartService.items$);
-  sum = toSignal(this.cartService.sum$);
+  items = this.cartService.items;
+  sum = this.cartService.sum;
 
   amountChanged(event: Event, item: CartItem) {
     const newValue = parseInt((event.target as any).value);
