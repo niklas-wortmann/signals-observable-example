@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { CartItem, CartService } from './cart.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-cart',
@@ -37,7 +38,7 @@ import { CartItem, CartService } from './cart.service';
           <div
             class="py-4 mb-8 border-t border-b border-gray-200 dark:border-gray-700"
           >
-            @for (item of items$ | async; track item.id) {
+            @for (item of items(); track item.id) {
               <div class="flex flex-wrap items-center mb-6 -mx-4 md:mb-8">
                 <div class="w-full px-4 mb-6 md:w-4/6 lg:w-6/12 md:mb-0">
                   <div class="flex flex-wrap items-center -mx-4">
@@ -150,7 +151,7 @@ import { CartItem, CartService } from './cart.service';
                 <span class="text-gray-700 dark:text-gray-400">Subtotal</span>
                 <span
                   class="text-xl font-bold text-gray-700 dark:text-gray-400 "
-                  >{{ sum$ | async | currency }}</span
+                  >{{ sum() | currency }}</span
                 >
               </div>
               <div class="flex items-center justify-between pb-4 mb-4 ">
@@ -166,7 +167,7 @@ import { CartItem, CartService } from './cart.service';
                 >
                 <span
                   class="text-xl font-bold text-gray-700 dark:text-gray-400"
-                  >{{ sum$ | async | currency }}</span
+                  >{{ sum() | currency }}</span
                 >
               </div>
               <h2 class="text-lg text-gray-500 dark:text-gray-400">
@@ -189,7 +190,7 @@ import { CartItem, CartService } from './cart.service';
                 </a>
                 <a href="#">
                   <img
-                    src="https://i.postimg.cc/HL57j0V3/38605-paypal-straight-icon.png"
+                    ngSrc="https://i.postimg.cc/HL57j0V3/38605-paypal-straight-icon.png"
                     alt=""
                     class="object-cover h-16 w-26"
                   />
@@ -212,8 +213,8 @@ import { CartItem, CartService } from './cart.service';
 })
 export class CartComponent {
   private cartService = inject(CartService);
-  items$ = this.cartService.items$;
-  sum$ = this.cartService.sum$;
+  items = toSignal(this.cartService.items$);
+  sum = toSignal(this.cartService.sum$);
 
   amountChanged(event: Event, item: CartItem) {
     const newValue = parseInt((event.target as any).value);
