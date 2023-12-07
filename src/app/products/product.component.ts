@@ -1,19 +1,18 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { Product, ProductService } from './product.service';
+import { Product, ProductStore } from './product.service';
 import {
   AsyncPipe,
   CurrencyPipe,
   JsonPipe,
   NgOptimizedImage,
 } from '@angular/common';
-import { Observable, of } from 'rxjs';
 import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-product',
   standalone: true,
   imports: [JsonPipe, AsyncPipe, NgOptimizedImage, CurrencyPipe],
-  template: `@if (product$ | async; as product) {
+  template: `@if (product(); as product) {
       <div class="bg-gray-100 dark:bg-gray-800 py-8">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col md:flex-row -mx-4">
@@ -90,13 +89,13 @@ import { CartService } from '../cart/cart.service';
 export class ProductComponent implements OnInit {
   @Input() id = '';
 
-  private productService = inject(ProductService);
+  private productStore = inject(ProductStore);
   private cartService = inject(CartService);
 
-  protected product$: Observable<undefined | Product> = of(undefined);
+  protected product = this.productStore.selectedProduct;
 
   ngOnInit(): void {
-    this.product$ = this.productService.getProduct(this.id);
+    this.productStore.setSelectedProduct(this.id);
   }
 
   addToCart(product: Product) {
