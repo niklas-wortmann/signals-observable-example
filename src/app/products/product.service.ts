@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, catchError, map, of, switchMap } from 'rxjs';
+import { data } from '../test';
 
 export type Product = {
   id: string;
@@ -37,9 +38,7 @@ export class ProductService {
 
   private sortSub = new BehaviorSubject<ProductSort>('alphabetically');
   private paginationSub = new BehaviorSubject(1);
-
   public page$ = this.paginationSub.asObservable();
-
   public products$ = this.page$.pipe(
     switchMap((page) =>
       this.getProducts(page).pipe(
@@ -111,6 +110,11 @@ export class ProductService {
   }
 
   setSearchQuery(query: string) {
+    this.someMethod(data.data);
     this.search.next(query);
+  }
+
+  someMethod(data: any) {
+    return data.data;
   }
 }

@@ -1,14 +1,20 @@
-import {Component, computed, EventEmitter, input, Output} from '@angular/core';
-import {Product} from './product.service';
-import {RouterLink} from '@angular/router';
-import {CurrencyPipe, NgOptimizedImage} from '@angular/common';
+import {
+  Component,
+  computed,
+  EventEmitter,
+  input,
+  Output,
+} from '@angular/core';
+import { Product } from './product.service';
+import { RouterLink } from '@angular/router';
+import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
   imports: [RouterLink, NgOptimizedImage, CurrencyPipe],
   template: `
-    @if (product(); as product) {
+    @if (data(); as product) {
       <a
         [routerLink]="productLink()"
         class="h-full max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 min hover:dark:bg-gray-500 flex justify-between flex-col"
@@ -51,15 +57,15 @@ import {CurrencyPipe, NgOptimizedImage} from '@angular/common';
   styles: ``,
 })
 export class CardComponent {
-  product = input.required<Product>();
+  data = input.required<Product>();
   @Output() public addToCart = new EventEmitter<Product>();
 
   protected productLink = computed(() => {
-    return './' + this.product().id;
+    return './' + this.data().id;
   });
 
   protected productAltText = computed(() => {
-    return this.product().title + 'thumbnail';
+    return this.data().title + 'thumbnail';
   });
 
   add(event: MouseEvent, product: Product) {

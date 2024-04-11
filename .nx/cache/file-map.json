@@ -1,0 +1,157 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.3.2",
+  "deps": {
+    "@angular/animations": "17.1.1",
+    "@angular/common": "17.1.1",
+    "@angular/compiler": "17.1.1",
+    "@angular/core": "17.1.1",
+    "@angular/forms": "17.1.1",
+    "@angular/platform-browser": "17.1.1",
+    "@angular/platform-browser-dynamic": "17.1.1",
+    "@angular/router": "17.1.1",
+    "@ngrx/signals": "17.1.0",
+    "ngxtension": "2.2.1",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.2",
+    "@angular-devkit/build-angular": "17.1.1",
+    "@angular/cli": "17.1.1",
+    "@angular/compiler-cli": "17.1.1",
+    "@types/jasmine": "~5.1.0",
+    "autoprefixer": "10.4.16",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "postcss": "8.4.32",
+    "prettier": "3.1.0",
+    "tailwindcss": "3.3.5",
+    "typescript": "5.3.3"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "6686520031028425313"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "13044518069027839699"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "5331566439708925252"
+      },
+      {
+        "file": ".vscode/launch.json",
+        "hash": "17038929134016848735"
+      },
+      {
+        "file": ".vscode/tasks.json",
+        "hash": "5336636969995539451"
+      },
+      {
+        "file": "README.md",
+        "hash": "12622396793473446856"
+      },
+      {
+        "file": "angular.json",
+        "hash": "1700228460558557543"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "8675896157618535621"
+      },
+      {
+        "file": "package.json",
+        "hash": "10459929129793670655"
+      },
+      {
+        "file": "src/app/app.component.ts",
+        "hash": "2243501435758986093"
+      },
+      {
+        "file": "src/app/app.config.ts",
+        "hash": "9540818434843266319"
+      },
+      {
+        "file": "src/app/app.routes.ts",
+        "hash": "3197656985615150745"
+      },
+      {
+        "file": "src/app/cart/cart-button.component.ts",
+        "hash": "2405970324711108615"
+      },
+      {
+        "file": "src/app/cart/cart.component.ts",
+        "hash": "15093050790423697872"
+      },
+      {
+        "file": "src/app/cart/cart.service.ts",
+        "hash": "15055150587627644424"
+      },
+      {
+        "file": "src/app/header.component.ts",
+        "hash": "9749790434382460560"
+      },
+      {
+        "file": "src/app/products/card.component.ts",
+        "hash": "2304501436116053875"
+      },
+      {
+        "file": "src/app/products/product-list.component.ts",
+        "hash": "12808136278979818447"
+      },
+      {
+        "file": "src/app/products/product.component.ts",
+        "hash": "13146868599879098916"
+      },
+      {
+        "file": "src/app/products/product.service.ts",
+        "hash": "5183728098122139917"
+      },
+      {
+        "file": "src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/favicon.ico",
+        "hash": "3988961587069885523"
+      },
+      {
+        "file": "src/index.html",
+        "hash": "17229708904890215500"
+      },
+      {
+        "file": "src/main.ts",
+        "hash": "4927504514031276065"
+      },
+      {
+        "file": "src/styles.css",
+        "hash": "2866083945719690482"
+      },
+      {
+        "file": "tailwind.config.js",
+        "hash": "1953686720069507907"
+      },
+      {
+        "file": "tsconfig.app.json",
+        "hash": "17337579397915052279"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "8074232012119176151"
+      },
+      {
+        "file": "tsconfig.spec.json",
+        "hash": "15575553540147145788"
+      }
+    ]
+  }
+}

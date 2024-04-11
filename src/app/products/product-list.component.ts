@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { Product, ProductService } from './product.service';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { AsyncPipe } from '@angular/common';
 import { CardComponent } from './card.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -21,9 +21,9 @@ import { ActivatedRoute } from '@angular/router';
       </select>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      @for (product of (products$ | async)?.products; track product.id) {
+      @for (product of products()?.products; track product.id) {
         <app-product-card
-          [product]="product"
+          [data]="product"
           (addToCart)="addToCart($event)"
         ></app-product-card>
       }
@@ -53,12 +53,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
   protected productService = inject(ProductService);
-  protected cartService = inject(CartService);
-  private activatedRoute = inject(ActivatedRoute);
-
-  protected products$ = this.productService.products$;
-  private readonly destroy: DestroyRef = inject(DestroyRef);
   sortBy = new FormControl(this.productService.getCurrentSortValue());
+  protected cartService = inject(CartService);
+  protected products = toSignal(this.productService.products$);
+  private activatedRoute = inject(ActivatedRoute);
+  private readonly destroy: DestroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
     this.sortBy.valueChanges
