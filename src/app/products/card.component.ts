@@ -1,7 +1,13 @@
-import {Component, computed, EventEmitter, input, Output} from '@angular/core';
-import {Product} from './product.service';
-import {RouterLink} from '@angular/router';
-import {CurrencyPipe, NgOptimizedImage} from '@angular/common';
+import {
+  Component,
+  computed,
+  EventEmitter,
+  input,
+  Output,
+} from '@angular/core';
+import { Product } from './product.service';
+import { RouterLink } from '@angular/router';
+import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-product-card',
@@ -13,7 +19,7 @@ import {CurrencyPipe, NgOptimizedImage} from '@angular/common';
         [routerLink]="productLink()"
         class="h-full max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 min hover:dark:bg-gray-500 flex justify-between flex-col"
       >
-        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+        <div class="relative h-56 overflow-hidden rounded-lg md:h-96 ">
           <img
             class="rounded-t-lg"
             fill
@@ -41,7 +47,7 @@ import {CurrencyPipe, NgOptimizedImage} from '@angular/common';
           >
             Add to Cart
           </button>
-          <p class="font-normal text-indigo-500 dark:text-gray-400 text-right ">
+          <p class="font-normal text-indigo-500 dark:text-gray-400 text-right w">
             {{ product.price | currency }}
           </p>
         </div>

@@ -141,3 +141,12 @@ export const ProductStore = signalStore(
     },
   }),
 );
+
+export const Product1Store = signalStore(
+  { providedIn: 'root' },
+  withMethods(() => {
+    return {
+      increasePage: () => undefined,
+    };
+  }),
+);

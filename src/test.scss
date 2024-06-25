@@ -1,0 +1,12 @@
+.foo {
+  transition: max-height $transition-duration-500,
+  margin $transition-duration-400,
+  opacity $transition-duration-400,
+  color $transition-duration-100;
+
+
+  background-image: radial-gradient(
+      circle at bottom left, $color-gradient--1-0 10%,
+      $color-gradient--1-1 90%
+  );
+}

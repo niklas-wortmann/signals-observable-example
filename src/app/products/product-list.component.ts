@@ -3,7 +3,7 @@ import { Product, ProductStore } from './product.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AsyncPipe } from '@angular/common';
 import { CardComponent } from './card.component';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { filter, finalize } from 'rxjs';
 import { CartService } from '../cart/cart.service';
 import { ActivatedRoute } from '@angular/router';
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [AsyncPipe, CardComponent, ReactiveFormsModule],
+  imports: [AsyncPipe, CardComponent],
   template: `
     <div class="border-b-2 border-indigo-500 text-right m-2">
       <select name="sort by" id="productSort" [formControl]="sortBy">
@@ -25,7 +25,10 @@ import { ActivatedRoute } from '@angular/router';
         <app-product-card
           [product]="product"
           (addToCart)="addToCart($event)"
+          #productCard
+          [ngModel]=""
         ></app-product-card>
+        {{ productCard.product }}
       }
     </div>
     <nav aria-label="Page navigation example" class="flex m-1 justify-center">
@@ -53,12 +56,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
   protected productStore = inject(ProductStore);
-  protected cartService = inject(CartService);
-  private activatedRoute = inject(ActivatedRoute);
-
-  protected products = this.productStore.sortedProducts;
-  private readonly destroy: DestroyRef = inject(DestroyRef);
   sortBy = new FormControl(this.productStore.sort());
+  protected cartService = inject(CartService);
+  protected products = this.productStore.sortedProducts;
+  private activatedRoute = inject(ActivatedRoute);
+  private readonly destroy: DestroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
     this.sortBy.valueChanges
